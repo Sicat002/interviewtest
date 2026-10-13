@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#111827">
+
+    <title>CTS Interview | Practice Exam</title>
+
+    <!-- ==========================================
+         CSS STYLESHEET
+    =========================================== -->
+
+    <link rel="stylesheet" href="test.css">
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="test.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         MAIN WEBSITE CONTAINER
+    =========================================== -->
+
+    <main class="shell">
+
+        <!-- ======================================
+             HEADER
+        ======================================= -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <span class="brand-mark"
+                      aria-hidden="true">
+                    C
+                </span>
+
+                <div>
+
+                    <strong>
+                        CTS INTERVIEW PREP
+                    </strong>
+
+                    <span>
+                        East Campus · Study Lab
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="top-actions">
+
+                <span class="pill">
+                    Based on your study notes
+                </span>
+
+                <button
+                    class="text-btn"
+                    id="restartTop"
+                    type="button">
+
+                    ↻ Restart
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             INTRODUCTION
+        ======================================= -->
+
+        <section class="intro"
+                 aria-labelledby="page-title">
+
+            <div class="eyebrow">
+
+                <span class="eyebrow-line"></span>
+
+                INTERACTIVE PRACTICE EXAM
+
+            </div>
+
+            <h1 id="page-title">
+
+                Know the answer.
+
+                <em>Own the interview.</em>
+
+            </h1>
+
+            <p>
+
+                Work through realistic multiple-choice
+                questions pulled from your CTS interview
+                notes.
+
+                Each time you start, the questions and
+                answer choices are mixed up.
+
+            </p>
+
+
+            <!-- ==================================
+                 TEST STATISTICS
+            =================================== -->
+
+            <div class="stats-strip"
+                 aria-label="Exam statistics">
+
+
+                <!-- TOTAL QUESTIONS -->
+
+                <div class="stat">
+
+                    <strong id="questionTotal">
+                        24
+                    </strong>
+
+                    <span>Questions</span>
+
+                </div>
+
+
+                <!-- ANSWERED QUESTIONS -->
+
+                <div class="stat">
+
+                    <strong id="answeredStat">
+                        0
+                    </strong>
+
+                    <span>Answered</span>
+
+                </div>
+
+
+                <!-- CORRECT ANSWERS -->
+
+                <div class="stat">
+
+                    <strong id="correctStat">
+                        0
+                    </strong>
+
+                    <span>Correct</span>
+
+                </div>
+
+
+                <!-- ACCURACY -->
+
+                <div class="stat">
+
+                    <strong id="accuracyStat">
+                        —
+                    </strong>
+
+                    <span>Accuracy</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             TEST WORKSPACE
+        ======================================= -->
+
+        <section class="workspace"
+                 aria-label="Question area">
+
+
+            <!-- ==================================
+                 QUESTION HEADER
+            =================================== -->
+
+            <div class="test-header">
+
+                <div>
+
+                    <span
+                        class="section-tag"
+                        id="categoryTag">
+
+                        TROUBLESHOOTING
+
+                    </span>
+
+                    <h2>
+                        Practice questions
+                    </h2>
+
+                </div>
+
+
+                <!-- QUESTION COUNTER -->
+
+                <div class="counter"
+                     id="questionCounter">
+
+                    01 / 24
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================
+                 PROGRESS BAR
+            =================================== -->
+
+            <div
+                class="progress-track"
+                id="progressTrack"
+                role="progressbar"
+                aria-label="Exam progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+
+            <!-- ==================================
+                 QUESTION CARD
+            =================================== -->
+
+            <article
+                class="question-card"
+                id="questionCard">
+
+
+                <!-- QUESTION INFORMATION -->
+
+                <div class="question-head">
+
+                    <span
+                        class="question-label"
+                        id="questionLabel">
+
+                        QUESTION 01
+
+                    </span>
+
+                    <span class="difficulty-label">
+
+                        Choose the best answer
+
+                    </span>
+
+                </div>
+
+
+                <!-- ==================================
+                     QUESTION TEXT
+                =================================== -->
+
+                <h3 id="questionText"></h3>
+
+
+                <!-- ==================================
+                     MULTIPLE CHOICE ANSWERS
+
+                     JAVASCRIPT WILL:
+                     1. CREATE FOUR ANSWER BUTTONS
+                     2. RANDOMIZE THEIR POSITIONS
+                     3. DETECT THE SELECTED ANSWER
+                =================================== -->
+
+                <div
+                    class="choices"
+                    id="choices"
+                    role="group"
+                    aria-label="Answer choices">
+
+                </div>
+
+
+                <!-- ==================================
+                     ANSWER FEEDBACK
+
+                     WRONG ANSWER:
+                     Display "Wrong Answer"
+
+                     CORRECT ANSWER:
+                     Display full explanation
+                =================================== -->
+
+                <div
+                    class="feedback"
+                    id="feedback"
+                    role="status"
+                    aria-live="polite"
+                    hidden>
+
+
+                    <!-- FEEDBACK STATUS -->
+
+                    <div class="feedback-top">
+
+                        <span
+                            class="feedback-icon"
+                            id="feedbackIcon">
+                        </span>
+
+                        <strong id="feedbackTitle">
+                        </strong>
+
+                    </div>
+
+
+                    <!-- EXPLANATION HEADING -->
+
+                    <div
+                        class="explanation-title"
+                        id="explanationTitle">
+
+                        Explanation from your notes
+
+                    </div>
+
+
+                    <!-- FULL ANSWER EXPLANATION -->
+
+                    <p id="feedbackText"></p>
+
+                </div>
+
+
+                <!-- ==================================
+                     QUESTION NAVIGATION
+                =================================== -->
+
+                <div class="question-footer">
+
+
+                    <!-- HELPER MESSAGE -->
+
+                    <span id="helperText">
+
+                        Select an answer to check
+                        your understanding.
+
+                    </span>
+
+
+                    <!-- NEXT QUESTION BUTTON -->
+
+                    <button
+                        class="primary-btn"
+                        id="nextBtn"
+                        type="button"
+                        disabled>
+
+                        Next question
+
+                        <span aria-hidden="true">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- ==================================
+                 FINAL TEST RESULTS
+
+                 HIDDEN UNTIL TEST COMPLETION
+            =================================== -->
+
+            <section
+                class="results"
+                id="results"
+                hidden
+                aria-live="polite">
+
+
+                <!-- RESULTS HEADING -->
+
+                <span class="section-tag">
+
+                    SESSION COMPLETE
+
+                </span>
+
+                <h2>
+                    Practice complete.
+                </h2>
+
+
+                <!-- FINAL PERCENTAGE -->
+
+                <div
+                    class="result-score"
+                    id="resultScore">
+
+                    0%
+
+                </div>
+
+
+                <!-- SCORE MESSAGE -->
+
+                <p id="resultMessage"></p>
+
+
+                <!-- DETAILED RESULTS -->
+
+                <div
+                    class="result-details"
+                    id="resultDetails">
+
+                </div>
+
+
+                <!-- ==================================
+                     RESULTS BUTTONS
+                =================================== -->
+
+                <div class="result-buttons">
+
+
+                    <!-- RETRY INCORRECT ANSWERS -->
+
+                    <button
+                        class="primary-btn"
+                        id="retryMissedBtn"
+                        type="button">
+
+                        Practice missed questions ↗
+
+                    </button>
+
+
+                    <!-- RESTART RANDOMIZED TEST -->
+
+                    <button
+                        class="secondary-btn"
+                        id="newTestBtn"
+                        type="button">
+
+                        New randomized test
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ======================================
+             WEBSITE FOOTER
+        ======================================= -->
+
+        <footer>
+
+            Created exclusively from your uploaded
+            CTS interview-preparation notes.
+
+            No outside material added.
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
